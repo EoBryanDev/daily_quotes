@@ -7,5 +7,7 @@ export const MenuList = styled.li`
    list-style: none;
    padding: 0 10px;
    margin-left: 5px;
-
+   
 `
+
+

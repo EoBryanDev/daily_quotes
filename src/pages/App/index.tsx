@@ -6,6 +6,7 @@ import { AuthorQuote } from '../AuthorQuote'
 import DailyQuote from '../DailyQuote'
 
 function App() {
+    
   return (
     <div>
       <Menu />
