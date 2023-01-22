@@ -6,25 +6,26 @@ import { PageTitle } from '../../components/PageTitle'
 import * as Styled from './styles'
 
 export const DailyQuote = () => {
-  const [quote, setQuote] = useState<IQuote | null>(null)
-    // eu poderia verificar se existe algum cookie ou storage com o indice já visto hoje se 
-    //      o dia que foi setado for diferente do de hoje, e se ele não for diferente então manter o mesmo quote
+    // a ideia será implementar o react query aqui 
+  const [quote, setQuote] = useState<IQuote | null >(null)
+
   useEffect(() => {
     const searchData = async () => {
-      const dailyQuote = await getQuotes()
-      const randomItem = Math.floor(Math.random() * dailyQuote.length)
-      console.log(randomItem)
-
-      //  const dailyQuote = {response.data.[Math.random]}
-      setQuote(dailyQuote[randomItem])
-      return dailyQuote
-    }
-
-    searchData()
-  }, [])
+        
+          const dailyQuote = await getQuotes()
+          console.log(dailyQuote);
+          
+          
+          setQuote(dailyQuote)
+          
+          
+          return dailyQuote
+        }
+        searchData()
+    },[])
   return (
     <Styled.Container>
-        <PageTitle>Daily Quote</PageTitle>
+      <PageTitle>Daily Quote</PageTitle>
       {quote === null ? (
         <h1>Loading...</h1>
       ) : (
