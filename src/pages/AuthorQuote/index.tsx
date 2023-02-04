@@ -1,29 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react'
 import { AuthorGrid } from '../../components/AuthorGrid'
-import { PageTitle } from '../../components/PageTitle'
+import { IQuote } from '../../interface/IQuote'
+import { TAuthor } from '../../types/TAuthor'
 import { getAllQuotes } from '../../utils/getAllQuotes'
-import { TQuote } from '../../utils/getDailyQuote'
 
 export const AuthorQuote = () => {
-  const [author, setAuthors] = useState<string[] | null>([])
+  const [author, setAuthors] = useState<TAuthor[] | null>(null)
 
   useEffect(() => {
     const getQuotes = async () => {
       const response = await getAllQuotes()
-      // response.reduce((a, b) => {
-      const aut = response.map((item: any) => item.author)
 
-      const responseFiltered = aut.filter((este: any, i: any) => aut.indexOf(este) === i).sort()
-      console.log(responseFiltered)
+      const aut = response.map((item: IQuote) => item.author)
 
-      // })
+      const responseFiltered = aut
+        .filter((este: TAuthor, i: number) => aut.indexOf(este) === i)
+        .sort()
+
       setAuthors(responseFiltered)
     }
     getQuotes()
   }, [])
-
-  return (   
-      <AuthorGrid author={author} />
-  )
+  if (!author) {
+    return <h1>Loading...</h1>
+  } else {
+    return <AuthorGrid author={author} />
+  }
 }

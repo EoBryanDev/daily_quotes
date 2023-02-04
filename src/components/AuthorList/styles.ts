@@ -13,7 +13,10 @@ export const AuthorListSize = styled.div`
     align-items: center;
     border-radius: 10px;
     letter-spacing: 3px;
-    color: ${theme.projectStyle.colors.primaryColor}
+    color: ${theme.projectStyle.colors.primaryColor};
     `}
+    &:hover{
+        cursor: pointer;
+    }
 
 `
