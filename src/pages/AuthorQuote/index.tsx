@@ -25,6 +25,10 @@ export const AuthorQuote = () => {
   if (!author) {
     return <h1>Loading...</h1>
   } else {
-    return <AuthorGrid author={author} />
+    return (
+      <>
+        <AuthorGrid author={author} />
+      </>
+    )
   }
 }
